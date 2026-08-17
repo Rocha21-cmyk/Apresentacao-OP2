@@ -1,0 +1,207 @@
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Cores em hexadecimal e fonte do Google Fonts */
+    background-color: #1e1e24;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+ 
+    font-size: 1rem;
+    line-height: 1.5;
+}
+a:focus, button:focus {
+    outline: 2px solid #f59e0b;
+}
+ 
+.cabecalho {
+    background-color: #0f0f12;
+    padding: 1.5rem;
+    border-bottom: 3px solid #f59e0b;
+    
+    /* usei Flexbox para alinhar o topo em coluna (mobile) */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.logo-area {
+    /* Flexbox para alinhar o logo do lado do texto */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    height: 4rem; /* o rem é a unidade relativa */
+    width: auto;
+}
+
+.header-texto h1 {
+    font-size: 1.2rem;
+    color: #f59e0b;
+}
+
+.header-texto a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+/* menu principal ja com o flexbox   */
+.menu-principal {
+    list-style: none;
+    
+    /* Flexbox pra deixar os links do menu lado a lado */
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+/* Estilo das caixas do menu */
+.menu-principal a, .sublista-btn {
+    display: block;
+    padding: 0.5rem 1rem;
+    background-color: #2b2b36;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    
+    /* a transição que foi exigida no moodle  */
+    transition: background-color 0.3s ease;
+}
+
+/* Pseudo-classe :hover para quando passar o mouse */
+.menu-principal a:hover, 
+.sublista-btn:hover, 
+.menu-principal a.active {
+    background-color: #f59e0b;
+    color: #000000;
+}
+
+/* SUBMENU DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.sublista {
+    /* Escondi a sublista por padrão */
+    display: none; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2b2b36;
+    list-style: none;
+    min-width: 10rem;
+    border-radius: 5px;
+}
+
+.sublista li a {
+    border-bottom: 1px solid #3f3f4e;
+}
+
+/*  Quando passa o mouse na li.dropdown, a sublista aparece */
+.dropdown:hover .sublista {
+    display: block;
+}
+
+.grid-principal {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+    padding: 1.5rem;
+    
+    /* Largura em Unidade Relativa vw */
+    max-width: 85vw;
+    margin: 0 auto;
+}
+
+/* o estilo dos cards */
+.card-destaque, .secao-cards, .card-aside {
+    background-color: #2b2b36;
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #3f3f4e;
+}
+
+.card-destaque h2, .secao-cards h3, .card-aside h3 {
+    color: #f59e0b;
+    margin-bottom: 0.8rem;
+}
+
+.banner-container {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.banner {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.galeria-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.card {
+    /* O flex: 1 faz os cards dividirem o espaço igualmente */
+    flex: 1;
+    min-width: 200px;
+    background-color: #1e1e24;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #3f3f4e;
+}
+
+.btn-card {
+    display: inline-block;
+    margin-top: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    background-color: #f59e0b;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.btn-card:hover {
+    background-color: #d97706;
+}
+.rodape {
+    text-align: center;
+    padding: 1.2rem;
+    background-color: #0f0f12;
+    margin-top: 2rem;
+    border-top: 1px solid #3f3f4e;
+    font-size: 0.85rem;
+}
+
+
+/* Quando a tela do computador for maior que 768px (48rem) */
+@media (min-width: 48rem) {
+    .cabecalho {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Dividi o Grid em 2 Colunas: Conteúdo (2 partes) e Barra Lateral (1 parte) */
+    .grid-principal {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    /* A seção de cards ocupa as 2 colunas abaixo */
+    .secao-cards {
+        grid-column: span 2;
+    }
+}
